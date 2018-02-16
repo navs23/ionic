@@ -28,10 +28,27 @@
       </ion-select>
       </ion-item>
       <ion-item>
-        <button ion-button block type="submit" >Save</button>
-
+          <button ion-button block type="submit" >Save</button>
       </ion-item>
-</ion-list>
+    </ion-list>
+      
+
+        <button 
+        ion-button 
+        type="button" 
+        clear
+        block (click)="onManageIngredients()"
+        >Manage Ingredients</button>
+        <ion-list>
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-list>
+   
+
+      
+    
 
 </form>
 </ion-content>
