@@ -15,12 +15,22 @@ private recipes:Recipe[];
 
   }
 onNewRecipe(){
-  this.navCtrl.push(RecipePage,{mode:'new'});
+  this.navCtrl.push(RecipePage,{mode:'New'});
+ 
 }
-onEditRecipe(recipe:string){
-  this.navCtrl.push(RecipePage,{mode:'edit'});
+onEditRecipe(index:number){
+  const recipe=this.recipes[index];
+  console.log("edit:%s",recipe.title);
+  this.navCtrl.push(RecipePage,{mode:'Edit',index:index,recipe:recipe});
 } 
 ngOnInit(){
   this.recipes=this.recipeServices.get();
+}
+ionViewWillEnter(){
+  this.recipes=this.recipeServices.get();
+  console.log('here');
+}
+onCheckItem(index:number){
+
 }
 }

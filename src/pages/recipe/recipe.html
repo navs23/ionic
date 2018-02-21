@@ -9,20 +9,20 @@
 
 
 <ion-content padding>
-<form [formGroup]="recipeGroup" #f="ngForm" (ngSubmit)="onRecipeSave(f)" >
+<form [formGroup]="recipeForm" #f="ngForm" (ngSubmit)="onRecipeSave(f)" >
 <ion-list>
   <ion-item>
     <ion-label floating>Title</ion-label>
-    <ion-input formControlName="title" type="text"></ion-input>
+    <ion-input formControlName="title" type="text" value="{{recipe?.title}}"></ion-input>
   </ion-item>
   <ion-item>
       <ion-label floating>Description</ion-label>
-      <ion-textarea formControlName="description"></ion-textarea>
+      <ion-textarea formControlName="description" value="{{recipe?.description}}" ></ion-textarea>
     </ion-item>
     <ion-item>
         <ion-label floating>Difficulty</ion-label>
-      <ion-select formControlName="difficulty">
-        <ion-option *ngFor="let option of options;" [value]="option">
+      <ion-select formControlName="difficulty" >
+        <ion-option  [value]="option" *ngFor="let option of options;" [selected] ="recipe?.difficulty==option">
           {{option}}
         </ion-option>
       </ion-select>
@@ -39,10 +39,11 @@
         clear
         block (click)="onManageIngredients()"
         >Manage Ingredients</button>
-        <ion-list>
-          <ion-item>
+        <ion-list formArrayName="ingredients">
+          <ion-item floating *ngFor="let igControl of recipeForm.get('ingredients').controls;let i = index;"
+          >
             <ion-label>Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [formControlName]="i"></ion-input>
           </ion-item>
         </ion-list>
    

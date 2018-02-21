@@ -1,10 +1,11 @@
+import { Ingredient } from "./ingredients";
+
 export class Recipe{
-    title:string;
-    description:string;
-    difficulty:string;
-    constructor( title:string,description:string,difficulty:string){
-        this.title=title;
-        this.description=description;
-        this.difficulty=difficulty;
+ 
+    constructor( public title:string,
+        public description:string,
+        public difficulty:string,
+        public ingredients:Ingredient[]){
+        
     }
 }

@@ -1,14 +1,17 @@
 <ion-header>
 
   <ion-navbar>
+      <ion-buttons start>
+          <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>          
+          </button>
+          </ion-buttons> 
     <ion-buttons>
       
-<button ion-button ion-only (click)="onNewRecipe()" >
-  <ion-icon name="add" end></ion-icon>
+    <button ion-button ion-only (click)="onNewRecipe()" >
+      <ion-icon name="add" end></ion-icon>
 
-</button>
-
-
+    </button>
     </ion-buttons>
     <ion-title>Recipes</ion-title>
   </ion-navbar>
@@ -21,10 +24,9 @@
                         
         <ion-row *ngFor="let item of recipes;let i=index;">
           <ion-col>
-            <ion-item (click)="onCheckItem(i)">
-            <ion-title>{{item.title}}</ion-title>
-         
-          <p>{{item.description}}</p>
+            <ion-item (click)="onEditRecipe(i)">
+            <ion-title>{{item.title}}</ion-title>                
+          <ion-note>{{item.difficulty}}</ion-note>
             </ion-item>
             
           
